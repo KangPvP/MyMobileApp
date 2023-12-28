@@ -1,71 +1,50 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_3/models/category_model.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class HomePage extends StatelessWidget {
-    const HomePage({super.key});
+    HomePage({super.key});
+    List<CategoryModel> categories = [];
 
-    static const String svgString = '''
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <g id="Iconly/Light/Arrow - Left 2">
-    <g id="Arrow - Left 2">
-    <path id="Stroke 1" d="M10.3334 12.6668L5.66671 8.00016L10.3334 3.3335" stroke="#1D1617" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-    </g>
-    </g>
-    </svg>''';
+    void _getCategories() {
+      categories = CategoryModel.getCategories();
+    }
 
     @override
     Widget build(BuildContext context) {
+      _getCategories();
       return Scaffold(
         appBar: appBar(),
         backgroundColor: Colors.white,
         body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              margin: const EdgeInsets.only(top:40, left: 20, right: 20),
-              decoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                    color: const Color(0xff1D1617).withOpacity(0.11),
-                    blurRadius: 40,
-                    spreadRadius: 0.0,
-                  )
-                ]
-              ),
-              child: TextField(
-                decoration: InputDecoration(
-                  filled: true, 
-                  fillColor: Colors.white,
-                  contentPadding: const EdgeInsets.all(15),
-                  hintText: 'Search Pancake',
-                  hintStyle: TextStyle(color: Color(0xffDDDADA), fontSize: 14),
-                  prefixIcon: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: SvgPicture.asset('assets/icons/Search.svg')
-                    ),
-                  suffixIcon: Container( 
-                    width:100, 
-                    child: IntrinsicHeight(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        const VerticalDivider(
-                          color: Colors.black, 
-                          indent: 10, 
-                          endIndent: 10, 
-                          thickness: 0.1,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: SvgPicture.asset('assets/icons/Filter.svg')
-                        )
-                    ])
+            _searchField(),
+            SizedBox(height: 40,),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Padding(
+                  padding: EdgeInsets.only(left: 20),
+                  child: Text('Category',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 18, 
+                      fontWeight: FontWeight.w600
                   )),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
-                    borderSide: BorderSide.none
-                  )
                 ),
-              ),
+                
+                SizedBox(height: 20),
+                Container(
+                  height: 150,
+                  color: Colors.green,
+                  child: ListView.builder(
+                    itemBuilder: (context, build) {
+                      return Container(); //container == widget
+                    },
+                  )
+                )
+              ],
             ),
         ]),
       );
@@ -127,4 +106,61 @@ class HomePage extends StatelessWidget {
         ],
       );
     }
+}
+
+class _searchField extends StatelessWidget {
+  const _searchField({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.only(top:40, left: 20, right: 20),
+      decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: const Color(0xff1D1617).withOpacity(0.11),
+            blurRadius: 40,
+            spreadRadius: 0.0,
+          )
+        ]
+      ),
+      child: TextField(
+        decoration: InputDecoration(
+          filled: true, 
+          fillColor: Colors.white,
+          contentPadding: const EdgeInsets.all(15),
+          hintText: 'Search Pancake',
+          hintStyle: TextStyle(color: Color(0xffDDDADA), fontSize: 14),
+          prefixIcon: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: SvgPicture.asset('assets/icons/Search.svg')
+            ),
+          suffixIcon: Container( 
+            width:100, 
+            child: IntrinsicHeight(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                const VerticalDivider(
+                  color: Colors.black, 
+                  indent: 10, 
+                  endIndent: 10, 
+                  thickness: 0.1,
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: SvgPicture.asset('assets/icons/Filter.svg')
+                )
+            ])
+          )),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(15),
+            borderSide: BorderSide.none
+          )
+        ),
+      ),
+    );
+  }
 }
