@@ -23,6 +23,15 @@ class CategoryModel{
     categories.add(
       CategoryModel(name: 'Blueberry', iconPath: 'assets/icons/blueberry-pancakes.svg', boxColor: Color(0xffC58BF2))
     );
+    categories.add(
+      CategoryModel(name: 'Blueberry', iconPath: 'assets/icons/blueberry-pancakes.svg', boxColor: Color(0xffC58BF2))
+    );
+    categories.add(
+      CategoryModel(name: 'Blueberry', iconPath: 'assets/icons/blueberry-pancakes.svg', boxColor: Color(0xffC58BF2))
+    );
+    categories.add(
+      CategoryModel(name: 'Blueberry', iconPath: 'assets/icons/blueberry-pancakes.svg', boxColor: Color(0xffC58BF2))
+    );
 
 
 

@@ -162,6 +162,7 @@ class _searchField extends StatelessWidget {
             color: const Color(0xff1D1617).withOpacity(0.11),
             blurRadius: 40,
             spreadRadius: 0.0,
+            
           )
         ]
       ),
