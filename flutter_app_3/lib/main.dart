@@ -15,11 +15,18 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(fontFamily: 'Poppins'),
-      //home: HomePage(),
-      home: MyPage(),
+      theme: ThemeData(
+        fontFamily: 'Poppins',
+        primarySwatch: Colors.green,
+      ),
       
+      //home: HomePage(),
+      home: const RootPage(),
+
     );
   }
 }
+
+
+
 
