@@ -10,14 +10,19 @@ class ProfilPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-          decoration: InputDecoration(
-            hintText: 'Phone Number',
-            label: const Text('Ton numero'),
-            border: const OutlineInputBorder(),
-            prefixIcon: _countryCodeButton(context: context)
-          ),
-        );
+    return Center(
+      child: TextFormField(
+        decoration: InputDecoration(
+          hintText: 'Phone Number',
+          label: const Text('Ton numero'),
+          border: const OutlineInputBorder(),
+          prefixIcon: _countryCodeButton(context: context)
+        ),
+        maxLength: 10,
+      )
+    );
+    
+
     
     
     /*ListView.builder(

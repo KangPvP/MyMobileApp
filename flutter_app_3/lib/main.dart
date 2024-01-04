@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 //import 'package:flutter_app_3/pages/home.dart';
 import 'package:flutter_app_3/pages/mypage.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 
 void main() {
-  runApp(const MyApp());
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
