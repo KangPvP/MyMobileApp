@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_app_3/pages/veriftelpage.dart';
 import 'package:flutter_app_3/utils/country_code_pick.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -11,20 +13,42 @@ class ProfilPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: TextFormField(
-        decoration: InputDecoration(
-          hintText: 'Phone Number',
-          label: const Text('Ton numero'),
-          border: const OutlineInputBorder(),
-          prefixIcon: _countryCodeButton(context: context)
-        ),
-        maxLength: 10,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            padding: const EdgeInsets.all(8.0),
+            child: TextFormField(
+              keyboardType: TextInputType.number,
+              inputFormatters: <TextInputFormatter>[
+                FilteringTextInputFormatter.digitsOnly
+              ], 
+              
+              decoration: InputDecoration(  
+                hintText: 'Phone Number',
+                label: const Text('Ton numero'),
+                border: const OutlineInputBorder(),
+                prefixIcon: _countryCodeButton(context: context)
+              ),
+              maxLength: 10,
+            ),
+          ),
+          
+          ElevatedButton(
+            child: const Text('Validé'), 
+            onPressed: (){
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (BuildContext context){ // Function for load the new page
+                    return const VerifTelPage();
+                  }
+                ),
+              );
+            }, ),
+        ],
       )
     );
-    
 
-    
-    
     /*ListView.builder(
       itemCount: itemCount,
       itemBuilder: (BuildContext context, int index) {

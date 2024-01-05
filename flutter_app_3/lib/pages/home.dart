@@ -106,10 +106,10 @@ class HomePage extends StatelessWidget {
         elevation: 0.0,
         centerTitle: true,
         leading: GestureDetector(
-            onTap: () {
-              
-            },
-            child: Container(
+          onTap: () {
+            
+          },
+          child: Container(
             margin: const EdgeInsets.all(10),
             alignment: Alignment.center,
             decoration: BoxDecoration(
