@@ -84,7 +84,6 @@ class ProfilPage extends StatelessWidget {
       }
     );
   }
-
 }
 
 String countryCodeToEmoji(String countryCode) {
