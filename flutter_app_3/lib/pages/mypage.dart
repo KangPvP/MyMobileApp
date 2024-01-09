@@ -1,7 +1,10 @@
+import "dart:convert";
+
 import "package:flutter/material.dart";
 import "package:flutter_app_3/pages/home.dart";
 import "package:flutter_app_3/pages/mainpage.dart";
 import "package:flutter_app_3/pages/profilpage.dart";
+import 'package:http/http.dart' as http;
 
 class MyPage extends StatelessWidget {
   MyPage({super.key});
@@ -29,6 +32,8 @@ class _RootPageState extends State<RootPage> {
     MainPage(),
     ProfilPage()
   ];
+  List<dynamic> users = [];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,7 +43,8 @@ class _RootPageState extends State<RootPage> {
       body: pages[currentPage],
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          debugPrint('Floationg Action Button');
+          fetchUsers();
+          print(users);
         },
         child: const Icon(Icons.add_alert_sharp),
       ),
@@ -56,4 +62,16 @@ class _RootPageState extends State<RootPage> {
       ),
     );
   }
+      void fetchUsers() async {
+        const url = 'https://randomuser.me/api/?resutlts=10';
+        final uri = Uri.parse(url);
+        final response = await http.get(uri);
+        final body = response.body;
+        final json = jsonDecode(body);
+        setState((){
+          users = json['results'];
+        });
+
+    }
+
 }
