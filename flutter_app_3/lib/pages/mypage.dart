@@ -44,7 +44,7 @@ class _RootPageState extends State<RootPage> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           fetchUsers();
-          print(users);
+
         },
         child: const Icon(Icons.add_alert_sharp),
       ),
