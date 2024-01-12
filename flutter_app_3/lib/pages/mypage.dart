@@ -26,13 +26,16 @@ class RootPage extends StatefulWidget {
   State<RootPage> createState() => _RootPageState();
 }
 
+class MyVariable {
+  static List<dynamic> users = [];
+}
+
 class _RootPageState extends State<RootPage> {
   int currentPage = 0;
   List<Widget> pages = const [
     MainPage(),
     ProfilPage()
   ];
-  List<dynamic> users = [];
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +46,10 @@ class _RootPageState extends State<RootPage> {
       body: pages[currentPage],
       floatingActionButton: FloatingActionButton(
         onPressed: () {
+          print('dsfdssf');
           fetchUsers();
+          print(MyVariable.users);
+          
 
         },
         child: const Icon(Icons.add_alert_sharp),
@@ -63,13 +69,13 @@ class _RootPageState extends State<RootPage> {
     );
   }
       void fetchUsers() async {
-        const url = 'https://randomuser.me/api/?resutlts=10';
+        const url = 'https://randomuser.me/api/?results=100';
         final uri = Uri.parse(url);
         final response = await http.get(uri);
         final body = response.body;
         final json = jsonDecode(body);
         setState((){
-          users = json['results'];
+          MyVariable.users = json['results'];
         });
 
     }

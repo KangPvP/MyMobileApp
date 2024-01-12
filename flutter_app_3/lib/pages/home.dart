@@ -22,9 +22,6 @@ class HomePage extends StatelessWidget {
             _searchField(),
             SizedBox(height: 40,),
             _categoriesSection(),
-            
-            
-
         ]),
       );
     }
