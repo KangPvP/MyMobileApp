@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_app_3/base_client.dart';
 import 'package:flutter_app_3/pages/veriftelpage.dart';
+import 'package:flutter_app_3/user.dart';
 import 'package:flutter_app_3/utils/country_code_pick.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -41,6 +42,8 @@ class ProfilPage extends StatelessWidget {
               var response = await BaseClient().get('/users').catchError((err){ });
               if(response == null) return;
               debugPrint("SuccessFul");
+              var users = User.fromJson(response);
+              debugPrint(users.length.toString());
               Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (BuildContext context){ // Function for load the new page

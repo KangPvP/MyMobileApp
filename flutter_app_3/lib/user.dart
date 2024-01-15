@@ -1,12 +1,8 @@
-// To parse this JSON data, do
-//
-//     final welcome = welcomeFromJson(jsonString);
-
 import 'dart:convert';
 
-List<User> welcomeFromJson(String str) => List<User>.from(json.decode(str).map((x) => User.fromJson(x)));
+List<User> userFromJson(String str) => List<User>.from(json.decode(str).map((x) => User.fromJson(x)));
 
-String welcomeToJson(List<User> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+String userToJson(List<User> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class User {
     DateTime? createdAt;
@@ -32,10 +28,6 @@ class User {
     );
 
     Map<String, dynamic> toJson() => {
-        "createdAt": createdAt!.toIso8601String(),
         "name": name,
-        "avatar": avatar,
-        "adress": adress,
-        "id": id,
     };
 }
