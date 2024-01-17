@@ -39,11 +39,14 @@ class ProfilPage extends StatelessWidget {
           ElevatedButton(
             child: const Text('Validé'), 
             onPressed: () async {
+
               var response = await BaseClient().get('/users').catchError((err){ });
               if(response == null) return;
               debugPrint("SuccessFul");
-              var users = User.fromJson(response);
-              debugPrint(users.length.toString());
+              var users = userFromJson(response);
+              debugPrint("Users count: " + users.length.toString());
+              
+
               Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (BuildContext context){ // Function for load the new page
@@ -51,7 +54,32 @@ class ProfilPage extends StatelessWidget {
                   }
                 ),
               );
-            }, ),
+            },
+          ),
+          ElevatedButton(
+            child: const Text('Post Request'), 
+            onPressed: () async {
+
+              var user = User(
+                  
+                createdAt: DateTime.now(),
+                name: "Karsog Bernhard",
+                avatar: "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/121.jpg",
+                adress: "Fort Shanialand",
+                id: "4"
+  
+              );
+              print(user);
+              var response = await BaseClient().post('/users', user).catchError((err){ });
+              if (response == null){
+                return;
+              }
+              debugPrint("Success Post methode");
+
+
+
+            }, 
+          ),
         ],
       )
     );
@@ -71,7 +99,7 @@ class ProfilPage extends StatelessWidget {
     );*/
   }
 
-  Widget _countryCodeButton({required BuildContext context}){
+  Widget _countryCodeButton({required BuildContext context}) {
     return Consumer(
       builder: (context, ref, _){
         final phoneCode = ref.watch(phoneCodeProvider);
