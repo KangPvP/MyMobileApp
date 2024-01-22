@@ -40,11 +40,11 @@ class ProfilPage extends StatelessWidget {
             child: const Text('Validé'), 
             onPressed: () async {
 
-              var response = await BaseClient().get('/users').catchError((err){ });
+              /*var response = await BaseClient().get('/users').catchError((err){ });
               if(response == null) return;
               debugPrint("SuccessFul");
               var users = userFromJson(response);
-              debugPrint("Users count: " + users.length.toString());
+              debugPrint("Users count: " + users.length.toString());*/
               
 
               Navigator.of(context).push(
