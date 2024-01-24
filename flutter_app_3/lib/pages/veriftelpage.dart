@@ -11,8 +11,10 @@ class VerifTelPage extends StatefulWidget {
 class _VerifTelPageState extends State<VerifTelPage> {
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text('Validation numero'),
+    return Container(
+      child: Center(
+        child: Text('Validation numero'),
+      ),
     );
   }
 }

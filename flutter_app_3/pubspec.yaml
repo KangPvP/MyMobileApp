@@ -38,7 +38,8 @@ dependencies:
   flutter_svg: ^2.0.9
   country_picker: ^2.0.23
   flutter_riverpod: ^2.4.9
-  http: ^1.1.2
+  http: ^1.2.0
+  flutter_background_geolocation: ^4.13.5
 
 dev_dependencies:
   flutter_test:

@@ -22,7 +22,12 @@ if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
 
+Project background_geolocation = project(':flutter_background_geolocation')
+apply from: "${background_geolocation.projectDir}/background_geolocation.gradle"
+
 android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+
     namespace "com.example.flutter_app_3"
     compileSdkVersion flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
@@ -45,8 +50,12 @@ android {
         applicationId "com.example.flutter_app_3"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
-        minSdkVersion flutter.minSdkVersion
-        targetSdkVersion flutter.targetSdkVersion
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        multiDexEnabled true
+        //minSdkVersion flutter.minSdkVersion
+        //targetSdkVersion flutter.targetSdkVersion
+
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
@@ -56,6 +65,11 @@ android {
             // TODO: Add your own signing config for the release build.
             // Signing with the debug keys for now, so `flutter run --release` works.
             signingConfig signingConfigs.debug
+            
+            minifyEnabled true
+            shrinkResources false
+            // background_geolocation requires custom Proguard Rules with minifyEnabled
+            proguardFiles "${background_geolocation.projectDir}/proguard-rules.pro"
         }
     }
 }

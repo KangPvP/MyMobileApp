@@ -2,6 +2,7 @@ import "dart:convert";
 
 import "package:flutter/material.dart";
 import "package:flutter_app_3/pages/home.dart";
+import "package:flutter_app_3/pages/learnpage.dart";
 import "package:flutter_app_3/pages/mainpage.dart";
 import "package:flutter_app_3/pages/profilpage.dart";
 import 'package:http/http.dart' as http;
@@ -34,7 +35,8 @@ class _RootPageState extends State<RootPage> {
   int currentPage = 0;
   List<Widget> pages = const [
     MainPage(),
-    ProfilPage()
+    ProfilPage(),
+    LearnPage()
   ];
 
   @override
@@ -42,6 +44,7 @@ class _RootPageState extends State<RootPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Flutter Course'),
+        backgroundColor: Colors.red,
       ),
       body: pages[currentPage],
       floatingActionButton: FloatingActionButton(
@@ -57,7 +60,8 @@ class _RootPageState extends State<RootPage> {
       bottomNavigationBar: NavigationBar(
         destinations: const [
           NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
-          NavigationDestination(icon: Icon(Icons.person), label: 'Profile')
+          NavigationDestination(icon: Icon(Icons.person), label: 'Profile'),
+          NavigationDestination(icon: Icon(Icons.numbers), label: '3')
         ],
         onDestinationSelected: (int index) {
           setState(() {
