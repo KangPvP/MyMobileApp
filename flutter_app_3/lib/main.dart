@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app_3/pages/mypage.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-//https://www.youtube.com/watch?v=NHlVuQpy8B4
+//https://www.youtube.com/watch?v=NHlVuQpy8B4 App With backend 3h
 void main() {
   runApp(const ProviderScope(child: MyApp()));
   

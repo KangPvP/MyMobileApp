@@ -25,6 +25,9 @@ class _LearnPageState extends State<LearnPage> {
 
     // Fired whenever a location is recorded
     bg.BackgroundGeolocation.onLocation((bg.Location location) {
+      var coords_lat = location.coords.latitude.toString(); 
+      var coords_lon = location.coords.longitude.toString(); 
+      print('[location] - $coords_lat  ||  $coords_lon');
       print('[location] - $location');
     });
 
@@ -42,10 +45,12 @@ class _LearnPageState extends State<LearnPage> {
     // 2.  Configure the plugin
     //
     bg.BackgroundGeolocation.ready(bg.Config(
+
         desiredAccuracy: bg.Config.DESIRED_ACCURACY_HIGH,
         distanceFilter: 10.0,
         stopOnTerminate: false,
         startOnBoot: true,
+        //enableHeadless: true,
         debug: true,
         logLevel: bg.Config.LOG_LEVEL_VERBOSE
     )).then((bg.State state) {
