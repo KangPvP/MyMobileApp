@@ -37,7 +37,7 @@ class TodoDB {
     return Todo.fromSQfliteDatabase(todo.first);
   }
 
-  Future<int> upadate({required int id, String? title}) async {
+  Future<int> update({required int id, String? title}) async {
     final database = await DatabaseService().database;
     return await database.update(
       tableName,

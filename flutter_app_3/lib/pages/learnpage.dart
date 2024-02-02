@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:country_picker/country_picker.dart';
 import 'package:flutter_app_3/pages/mainpage.dart';
 import 'package:flutter_app_3/pages/mypage.dart';
+import 'package:flutter_app_3/pages/todopage.dart';
 import 'package:flutter_app_3/utils/country_code_pick.dart';
 import 'package:flutter_background_geolocation/flutter_background_geolocation.dart' as bg;
 
@@ -117,6 +118,10 @@ class _LearnPageState extends State<LearnPage> {
               OutlinedButton(
                   onPressed: () {
                     debugPrint('Outlined Button');
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const TodoPage()),
+                    );
                   },
                   child: const Text('Outlined Button')),
               TextButton(
