@@ -11,7 +11,7 @@ class TodoDB {
         "id" INTEGER PRIMARY KEY AUTOINCREMENT,
         "title" VARCHAR(255) NOT NULL,
         "created_at" INTEGER NOT NULL DEFAULT (cast(strftime('%s','now') as int)),
-        "update_at" INTEGER, 
+        "update_at" INTEGER
       );
     """);
   }
@@ -26,7 +26,7 @@ class TodoDB {
   Future<List<Todo>> fetchAll() async {
     final database = await DatabaseService().database;
     final todos = await database.rawQuery(
-      '''SELECT * from $tableName ORDER BY COALESCE(updated_at, created_at)'''
+      '''SELECT * from $tableName ORDER BY COALESCE(update_at, created_at)'''
     );
     return todos.map((todo) => Todo.fromSQfliteDatabase(todo)).toList();
   }
