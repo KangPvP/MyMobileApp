@@ -6,6 +6,7 @@ class DatabaseService {
   Database? _database;
 
   Future<Database> get database async {
+    print("Database path: ${await getDatabasesPath()}");
     if(_database != null) {
       return _database!;
     }
@@ -22,6 +23,7 @@ class DatabaseService {
 
   Future<Database> _initialize() async {
     final path = await fullPath;
+    print("Database path: ${await getDatabasesPath()}");
     var database = await openDatabase(
       path,
       version: 1,
