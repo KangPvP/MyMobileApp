@@ -14,13 +14,11 @@ void main() {
       ////
     // 1.  Listen to events (See docs for all 12 available events).
     //
-
-    // Fired whenever a location is recorded
     bg.BackgroundGeolocation.onLocation((bg.Location location) {
-      var coords_lat = location.coords.latitude.toString(); 
-      var coords_lon = location.coords.longitude.toString(); 
-      print('[location] - $coords_lat  ||  $coords_lon');
-      print('[location] - $location');
+          var coords_lat = location.coords.latitude.toString(); 
+          var coords_lon = location.coords.longitude.toString(); 
+          print('[location] - $coords_lat  ||  $coords_lon');
+          print('[location] - $location');
     });
 
     // Fired whenever the plugin changes motion-state (stationary->moving and vice-versa)
@@ -53,11 +51,14 @@ void main() {
         bg.BackgroundGeolocation.start();
       }
     });
+  
+
 }
 
 class MyApp extends StatelessWidget {
 
   const MyApp({super.key});
+  
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
