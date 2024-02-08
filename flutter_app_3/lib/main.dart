@@ -14,6 +14,7 @@ void main() {
       ////
     // 1.  Listen to events (See docs for all 12 available events).
     //
+    
     bg.BackgroundGeolocation.onLocation((bg.Location location) {
           var coords_lat = location.coords.latitude.toString(); 
           var coords_lon = location.coords.longitude.toString(); 
