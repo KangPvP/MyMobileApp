@@ -25,4 +25,17 @@ class Users {
     this.homeLocation,
     required this.createdAt
   });
+
+  factory Users.fromSQfliteDatabase(Map<String, dynamic> map) => Users(
+    id: map['id']?.toInt() ?? 0,
+    phoneNumber: map['phonenumber'],
+    email: map['email'],
+    connexion: map['connexion'],
+    country: map['connexion'],
+    language: map['language'] ?? 'English',
+    homeLocation: map['homelocation'],
+    createdAt: DateTime.fromMicrosecondsSinceEpoch(map['created_at']).toIso8601String(),
+  
+  );
+
 }
